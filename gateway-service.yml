@@ -1,11 +1,6 @@
 server:
   port: 8080
 
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-
 spring:
   application:
     name: gateway-service
@@ -28,3 +23,14 @@ spring:
         #   uri: lb://order-service
         #   predicates:
         #     - Path=/orders/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+management:
+  metrics:
+    enable:
+      system: false
+      processor: false
