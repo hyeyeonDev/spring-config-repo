@@ -1,14 +1,7 @@
 spring:
-  profiles:
-    active: dev
-  cloud:
-    config:
-      uri: http://localhost:8888
-      fail-fast: true
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
+  application:
+    name: multi-tenant-core
+
 multitenancy:
   tenants:
     tenant1:
@@ -21,6 +14,3 @@ multitenancy:
       username: sa
       password: ''
       driver-class-name: org.h2.Driver
-jwt:
-  secret: your-default-secret-key
-  validity: 3600000
