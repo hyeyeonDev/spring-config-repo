@@ -2,18 +2,20 @@ server:
   port: 8081
 
 spring:
+  application:
+    name: user-service
   profiles:
     active: local
   cloud:
     config:
-      enabled: false
----
-spring:
-  application:
-    name: user-service
-  config:
-    activate:
-      on-profile: local
+      enabled: true # config-server 활성화
+      uri: http://config-server:8888
+      profile: local
+      label: main
+      name: user-service,multi-tenant-core,security-common
+      retry:
+        max-attempts: 6
+        initial-interval: 1000
   datasource:
     url: jdbc:h2:mem:security_db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     username: sa
@@ -22,10 +24,12 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+    open-in-view: false # JPA 경고 비활성화
   h2:
     console:
       enabled: true
       path: /h2-console
+
 management:
   endpoints:
     enabled-by-default: false
@@ -34,19 +38,16 @@ management:
       enabled: true
     info:
       enabled: true
-# multitenancy:
-#   tenants:
-#     tenant1:
-#       url: jdbc:h2:mem:tenant1_db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-#       username: sa
-#       password: ''
-#       driver-class-name: org.h2.Driver
-#     tenant2:
-#       url: jdbc:h2:mem:tenant2_db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-#       username: sa
-#       password: ''
-#       driver-class-name: org.h2.Driver
+  metrics:
+    enable:
+      system: false # ProcessorMetrics 비활성화
 
-# jwt:
-#   secret: QLS1ydgZDSmNXc6TK85m1YuhHN41tRc53Vbvo6CIowk=
-#   validity: 7200000
+logging:
+  level:
+    org.springframework: DEBUG
+    com.hy: DEBUG
+    org.springframework.cloud.config: TRACE
+    org.springframework.boot.actuate: TRACE
+    io.micrometer: DEBUG
+    org.springframework.beans: TRACE
+    org.springframework.context: TRACE
