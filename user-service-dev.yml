@@ -3,17 +3,17 @@ server:
 
 spring:
   profiles:
-    active: local
+    active: dev
   cloud:
     config:
       enabled: false
 ---
 spring:
+  application:
+    name: user-service
   config:
     activate:
       on-profile: local
-  application:
-    name: user-service
   datasource:
     url: jdbc:h2:mem:security_db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     username: sa
