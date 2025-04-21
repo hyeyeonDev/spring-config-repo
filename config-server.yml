@@ -8,11 +8,11 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/hyeyeonDev/spring-config-repo.git
+          uri: https://github.com/hyeyeonDev/spring-config-repo
           default-label: main
           clone-on-start: true
           force-pull: true
-          timeout: 10
+          # timeout: 10
 
 eureka:
   client:
