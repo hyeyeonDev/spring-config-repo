@@ -13,7 +13,8 @@ spring:
           clone-on-start: true
           force-pull: true
           # timeout: 10
-# eureka:
-#   client:
-#     service-url:
-#       defaultZone: http://localhost:8761/eureka/
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/

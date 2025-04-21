@@ -27,3 +27,15 @@ spring:
     console:
       enabled: true
       path: /h2-console
+
+management:
+  endpoints:
+    enabled-by-default: false
+  endpoint:
+    health:
+      enabled: true
+    info:
+      enabled: true
+  metrics:
+    enable:
+      system: false # ProcessorMetrics 비활성화
