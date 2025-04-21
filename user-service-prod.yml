@@ -4,13 +4,11 @@ server:
 spring:
   application:
     name: user-service
-  profiles:
-    active: local
   cloud:
     config:
       enabled: true # config-server 활성화
       uri: http://config-server:8888
-      profile: local
+      profile: prod
       label: main
       name: user-service,multi-tenant-core,security-common
       retry:
@@ -29,25 +27,3 @@ spring:
     console:
       enabled: true
       path: /h2-console
-
-management:
-  endpoints:
-    enabled-by-default: false
-  endpoint:
-    health:
-      enabled: true
-    info:
-      enabled: true
-  metrics:
-    enable:
-      system: false # ProcessorMetrics 비활성화
-
-logging:
-  level:
-    org.springframework: DEBUG
-    com.hy: DEBUG
-    org.springframework.cloud.config: TRACE
-    org.springframework.boot.actuate: TRACE
-    io.micrometer: DEBUG
-    org.springframework.beans: TRACE
-    org.springframework.context: TRACE
