@@ -43,6 +43,6 @@ multitenancy:
 
 jwt:
   secret: QLS1ydgZDSmNXc6TK85m1YuhHN41tRc53Vbvo6CIowk=
-  expiration: 3600000
+  validity: 7200000 # 2시간
 # openssl rand -base64 32
 # openssl rand -base64 64
