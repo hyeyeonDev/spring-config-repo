@@ -16,3 +16,4 @@ management:
   metrics:
     enable:
       process: false
+      system: false
