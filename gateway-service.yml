@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway-service
+
+  cloud:
+    gateway:
+      routes:
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/user/**
+#        - id: raffle-service
+#          uri: lb://raffle-service
+#          predicates:
+#            - Path=/raffle/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
