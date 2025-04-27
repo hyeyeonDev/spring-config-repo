@@ -13,9 +13,4 @@ eureka:
 management:
   metrics:
     enable:
-      system: false
-      processor: false
-  endpoints:
-    web:
-      exposure:
-        include: health,info,metrics
+      process: false
